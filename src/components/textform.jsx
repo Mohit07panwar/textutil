@@ -6,15 +6,19 @@ const TextForm = (props) => {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.setShow("success","Coverted to UpperCase");
     }
     const handleLoClick = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.setShow("success","Coverted to LowerCase");
+
     }
     const handleClearClick = () => {
         let newText = "";
         setText(newText);
     }
+
     const handleCapatalizedClick = () => {
         let arr = text.split(" ");
         for (let i = 0; i < arr.length; i++) {
@@ -29,6 +33,8 @@ const TextForm = (props) => {
     const handleCopy = () => {
         let text = document.getElementById("floatingTextarea").value;
         navigator.clipboard.writeText(text);
+        props.setShow("success","Text is Copied");
+
     }
 
     const handleSpaces = () => {
@@ -60,7 +66,7 @@ const TextForm = (props) => {
             <p>{text.split(" ").length} words and {text.length} character</p>
             <p>Takes {.008 * text.split(" ").length} to read the words</p>
             <h2>Preview</h2>
-            <p>{text}</p>
+            <p>{text.length>0?text:"Enter the Text in textarea to Preview"}</p>
         </>
     )
 }
